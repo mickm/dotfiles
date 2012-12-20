@@ -31,4 +31,8 @@ autoload -U promptinit
 promptinit
 prompt mickm
 
+if [[ $OSTYPE == darwin* ]]; then
+  alias tmux='tmux -f ~/.tmux-osx.conf'
+fi
+
 eval "$(rbenv init -)"
