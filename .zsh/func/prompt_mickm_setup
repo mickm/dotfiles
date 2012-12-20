@@ -1,0 +1,18 @@
+prompt_mickm_setup() {
+  autoload -U colors; colors
+  autoload -U vcs_info
+  prompt_opts=(cr subst percent)
+
+  precmd() {
+    local dirty
+    [[ -z $(git status -s 2>/dev/null) ]] && dirty= || dirty=⚡
+    zstyle ':vcs_info:git*' formats "±%b$dirty "
+    zstyle ':vcs_info:git*' actionformats "±%b$dirty:%a "
+    vcs_info
+  }
+
+  PROMPT='%(!.%{$fg[red]%}.%f)%n%f@%m:%~ %{$fg[green]%}${vcs_info_msg_0_}%f%# '
+  RPROMPT='%(?..%{$fg[red]%}%?%f)'
+}
+
+prompt_mickm_setup "$@"
