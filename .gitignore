@@ -1,5 +1,7 @@
 /*
 !/.gitignore
+!/.gitmodules
+!/.gitconfig
 !/.zshrc
 !/.zshenv
 !/.zsh

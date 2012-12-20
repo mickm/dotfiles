@@ -1,0 +1,15 @@
+[user]
+  name = mickm
+  email = mick@afroken.org
+[core]
+  autocrlf = input
+[color]
+  ui = auto
+[alias]
+  st = status
+  ci = commit -v
+  ca = commit -va
+  co = checkout
+  l = !git log --graph --pretty=tformat:'%Creset%h\t%C(bold red)%ar%Creset\t%C(cyan)%an%Creset\t%C(bold red)%d%Creset %s'
+[merge]
+  tool = vimdiff
