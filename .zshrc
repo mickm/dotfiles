@@ -16,8 +16,12 @@ setopt append_history
 setopt extended_history
 setopt inc_append_history
 setopt hist_ignore_dups
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
+
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey '\e[A' history-beginning-search-backward-end
+bindkey '\e[B' history-beginning-search-forward-end 
 
 autoload -U edit-command-line
 zle -N edit-command-line
