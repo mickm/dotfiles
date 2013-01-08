@@ -1,0 +1,25 @@
+#!/usr/bin/env osascript
+
+set currentTrack to missing value
+
+tell application "System Events"
+  set processList to (name of every process)
+end tell
+
+repeat with appName in { "Rdio", "iTunes" }
+  if processList contains appName then
+    using terms from application "iTunes"
+      tell application appName
+        if player state is playing then
+          set currentTrack to artist of current track & " - " & name of current track
+          exit repeat
+        end if
+      end tell
+    end using terms from
+  end if
+end repeat
+
+if currentTrack is not missing value then
+  get currentTrack
+end if
+

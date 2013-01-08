@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+bars=(▕▁▏ ▕▂▏ ▕▃▏ ▕▄▏ ▕▅▏ ▕▆▏ ▕▇▏ ▕█▏)
+percentage=$(pmset -g batt |egrep -o '([0-9]+%)' |tr -d '%')
+bar=$bars[$(( (${#bars}-1)*$percentage / 100 + 1 ))]
+
+[ $percentage -eq 100 ] && color="#[fg=green]"
+[ $percentage -lt 11  ] && color="#[fg=red]"
+
+echo "${color}${bar}#[fg=default]"
+
