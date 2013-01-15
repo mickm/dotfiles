@@ -39,6 +39,9 @@ if [[ $OSTYPE == darwin* ]]; then
   alias tmux='tmux -f ~/.tmux-osx.conf'
 fi
 
+export RUBY_GC_MALLOC_LIMIT=60000000
+export RUBY_FREE_MIN=200000
+
 eval "$(rbenv init -)"
 
 [[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"
