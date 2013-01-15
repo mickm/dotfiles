@@ -44,7 +44,10 @@ colorscheme solarized
 let mapleader=","
 
 " CoffeeScript folding
-au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+autocmd FileType coffee setlocal foldmethod=indent nofoldenable
+
+" Python indentation
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 " Split navigation
 nnoremap <c-j> <c-w>j
