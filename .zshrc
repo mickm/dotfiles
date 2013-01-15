@@ -40,3 +40,5 @@ if [[ $OSTYPE == darwin* ]]; then
 fi
 
 eval "$(rbenv init -)"
+
+[[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"
