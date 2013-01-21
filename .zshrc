@@ -45,3 +45,9 @@ export RUBY_FREE_MIN=200000
 eval "$(rbenv init -)"
 
 [[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"
+export PATH=./node_modules/.bin:$PATH
+
+if [ -d /Applications/Postgres.app ]; then
+  export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
+fi
+
