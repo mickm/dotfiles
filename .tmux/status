@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-track=$(~/.tmux/status-track |sed -E 's/^(.{39})..+/\1…/g')
+track=$(~/.tmux/status-track |sed -E 's/^(.{54})..+/\1…/g')
 battery=$(~/.tmux/status-battery)
 clock=$(date +"%m/%d %H:%M")
 
-[ "$track" ] && printf "♫ $track:l "
-[ "$battery" ] && printf " ⚡$battery"
+[ "$track" ] && printf " $track:l "
+[ "$battery" ] && printf " $battery "
 [ "$clock" ] && printf " $clock:l "
 

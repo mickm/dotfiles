@@ -4,8 +4,8 @@ bars=(▕▁▏ ▕▂▏ ▕▃▏ ▕▄▏ ▕▅▏ ▕▆▏ ▕▇▏ ▕�
 percentage=$(pmset -g batt |egrep -o '([0-9]+%)' |tr -d '%')
 bar=$bars[$(( (${#bars}-1)*$percentage / 100 + 1 ))]
 
-[ $percentage -eq 100 ] && color="#[fg=green]"
-[ $percentage -lt 11  ] && color="#[fg=red]"
+[ $percentage -eq 100 ] && color="#[bg=colour29,fg=colour83]"
+[ $percentage -lt 11  ] && color="#[bg=colour1,fg=colour167]"
 
-echo "${color}${bar}#[fg=default]"
-
+[ "$1" = "bar"] && echo "${color}${bar}#[bg=default,fg=default]" || \
+                   echo "${color}batt:${percentage}%%#[bg=default,fg=default]"
