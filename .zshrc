@@ -1,11 +1,8 @@
-alias ls='ls -G'
-alias b='bundle exec'
-alias g='git'
-
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH"
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-export EDITOR=vi
+export LS_COLORS="di=36;1:ln=35;1:so=32;1:pi=33;1:ex=31;1:bd=36;46:cd=35;45:su=0;41:sg=0;46:tw=0;42:ow=37;40:"
+export EDITOR=vim
 
 set -o emacs
 
@@ -29,7 +26,7 @@ bindkey '\C-x\C-e' edit-command-line
 
 autoload -U compinit
 compinit
-zstyle ':completion:*' menu select=20
+zstyle ':completion:*' menu select=8
 
 autoload -U promptinit
 promptinit
@@ -37,17 +34,33 @@ prompt mickm
 
 if [[ $OSTYPE == darwin* ]]; then
   alias tmux='tmux -f ~/.tmux-osx.conf'
+  LS_COMMAND='gls'
+else
+  LS_COMMAND='ls'
 fi
-
-export RUBY_GC_MALLOC_LIMIT=60000000
-export RUBY_FREE_MIN=200000
-
-eval "$(rbenv init -)"
-
-[[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"
-export PATH=./node_modules/.bin:$PATH
 
 if [ -d /Applications/Postgres.app ]; then
-  export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
+  export PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
 fi
 
+alias ls="$LS_COMMAND --group-directories-first --color"
+alias ll="ls -l"
+alias b='bundle exec'
+alias g='git'
+alias json='python -mjson.tool'
+alias http='python -mSimpleHTTPServer'
+alias vi='vim'
+alias ag='ag --color-match="38;5;71" --color-line-number="38;5;236;48;5;254" \
+  --color-path="38;5;236;48;5;254"'
+
+source_if_exists() {
+  [[ -s "$1" ]] && . "$1"
+}
+
+source_if_exists "$HOME/.nvm/nvm.sh"
+source_if_exists /usr/local/bin/virtualenvwrapper.sh
+source_if_exists /usr/local/share/chruby/chruby.sh
+RUBIES=(
+  ~/.rubies/*
+)
+source_if_exists "$HOME/.zshrc.local"
