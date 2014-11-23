@@ -11,5 +11,10 @@
   ca = commit -va
   co = checkout
   l = !git log --graph --pretty=tformat:'%Creset%h\t%C(bold red)%ar%Creset\t%C(cyan)%an%Creset\t%C(bold red)%d%Creset %s'
+  d = difftool
 [merge]
   tool = vimdiff
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
