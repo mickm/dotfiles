@@ -34,6 +34,7 @@ prompt mickm
 
 if [[ $OSTYPE == darwin* ]]; then
   alias tmux='tmux -f ~/.tmux-osx.conf'
+  alias vim='mvim -v'
   LS_COMMAND='gls'
 else
   LS_COMMAND='ls'
