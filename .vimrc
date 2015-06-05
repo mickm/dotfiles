@@ -52,6 +52,9 @@ autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd BufRead,BufNewFile *.pde set filetype=arduino
 autocmd BufRead,BufNewFile *.ino set filetype=arduino
 
+" ES6 syntax highlighting
+autocmd BufRead,BufNewFile *.es6 set filetype=javascript
+
 nnoremap <leader>ac :!ino build<CR>
 nnoremap <leader>ad :!ino upload<CR>
 
