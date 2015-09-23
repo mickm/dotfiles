@@ -54,7 +54,7 @@ alias json='python -mjson.tool'
 alias http='python -mSimpleHTTPServer'
 alias vi='vim'
 alias ag='ag --color-match="38;5;71" --color-line-number="38;5;236;48;5;254" \
-  --color-path="38;5;236;48;5;254"'
+  --color-path="38;5;236;48;5;254" --pager="less -XMFRS"'
 alias du1="du -d 1 -h |$SORT_COMMAND -rh"
 
 source_if_exists() {
